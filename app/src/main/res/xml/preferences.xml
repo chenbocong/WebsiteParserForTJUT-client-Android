@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:orange="org.orange">
+    <PreferenceCategory
+            android:key="prefs_general_settings"
+            android:title="@string/prefs_general_settings">
+        <org.orange.querysystem.content.AccountSettingPreference
+                android:key="pref_account"
+                android:title="@string/pref_student_account"
+                android:summary="@string/pref_student_account_summary"/>
+        <CheckBoxPreference
+                android:key="pref_request_password_for_private_information"
+                android:title="@string/pref_request_password_for_private_information"
+                android:summary="@string/pref_request_password_for_private_information_summary"
+                android:defaultValue="false"/>
+        <org.orange.querysystem.content.DatePickerPreference
+                android:key="pref_startingDate"
+                android:title="@string/pref_starting_date"
+                android:summary="@string/pref_starting_date_summary"
+                android:defaultValue="1392566400000L"
+                orange:minDateComparedWithRunTime="-15811200000"
+                orange:maxDateComparedWithRunTime="15811200000"/>
+        <!-- 1392566400000 为北京时间2014年2月17日 0:00:00的时间戳 -->
+        <!-- 15811200000ms 约为半年 -->
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="prefs_settings_of_post_updating"
+            android:title="@string/prefs_settings_of_post_updating">
+        <CheckBoxPreference
+                android:key="pref_update_post_automatically"
+                android:title="@string/pref_update_post_automatically"
+                android:summary="@string/pref_update_post_automatically_summary"
+                android:defaultValue="true"/>
+        <ListPreference
+                android:dependency="pref_update_post_automatically"
+                android:key="pref_interval_of_post_updating"
+                android:title="@string/pref_interval_of_post_updating"
+                android:entries="@array/intervals_of_post_updating"
+                android:entryValues="@array/values_of_intervals"
+                android:defaultValue="86400000"/>
+        <CheckBoxPreference
+                android:key="pref_use_alternative_in_mobile_connection"
+                android:title="@string/pref_use_alternative_in_mobile_connection"
+                android:summary="@string/pref_use_alternative_in_mobile_connection_summary"
+                android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="prefs_others"
+            android:title="@string/prefs_others">
+        <Preference
+                android:title="@string/about_me"
+                android:summary="@string/pref_about_summary">
+            <intent android:targetPackage="org.orange.querysystem"
+                    android:targetClass="org.orange.querysystem.AboutActivity"/>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
